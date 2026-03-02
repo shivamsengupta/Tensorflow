@@ -4,10 +4,8 @@
 # In[1]:
 
 
-# ==============================
-# Lab 2: Shallow vs Deep Networks
-# ==============================
 
+# Lab 2: Shallow vs Deep Networks
 
 # In[2]:
 
@@ -30,9 +28,7 @@ from tensorflow.keras import layers
 # In[3]:
 
 
-# ------------------------------
 # 1. Generate Random Data
-# ------------------------------
 
 X, y = make_classification(
     n_samples=1000,
@@ -47,9 +43,9 @@ X, y = make_classification(
 # In[4]:
 
 
-# ------------------------------
+
 # 2. Preprocess Data
-# ------------------------------
+
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
@@ -63,9 +59,9 @@ X_test = scaler.transform(X_test)
 # In[5]:
 
 
-# ------------------------------
+
 # 3. Shallow Neural Network
-# ------------------------------
+
 
 shallow_model = keras.Sequential([
     layers.Dense(16, activation='relu', input_shape=(3,)),
@@ -89,9 +85,9 @@ history_shallow = shallow_model.fit(
 # In[6]:
 
 
-# ------------------------------
+
 # 4. Deep Neural Network
-# ------------------------------
+
 
 deep_model = keras.Sequential([
     layers.Dense(32, activation='relu', input_shape=(3,)),
@@ -117,9 +113,9 @@ history_deep = deep_model.fit(
 # In[7]:
 
 
-# ------------------------------
+
 # 5. Evaluation
-# ------------------------------
+
 
 def evaluate_model(model, X_test, y_test, name):
     y_pred_prob = model.predict(X_test)
@@ -138,10 +134,8 @@ evaluate_model(deep_model, X_test, y_test, "Deep Model")
 
 # In[8]:
 
-
-# ------------------------------
 # 6. Plot Training Curves
-# ------------------------------
+
 
 plt.figure()
 plt.plot(history_shallow.history['loss'], label='Shallow Loss')
@@ -160,11 +154,9 @@ plt.show()
 
 # In[9]:
 
-
-# ------------------------------
 # 7. Decision Boundary Plot
 # (Using first 2 features only for visualization)
-# ------------------------------
+
 
 def plot_decision_boundary(model, X, y, title):
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
